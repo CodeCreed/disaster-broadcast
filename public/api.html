@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+  <head>
+    <title>API</title>
+  <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css" typetype="text/css">
+  <link rel="stylesheet" href="static/bootstrap/css/custom.css" typetype="text/css">
+  </head>
+  <body>
+    <div class="col-sm-12">
+      <div class="row">
+        <div class="col-sm-5"></div>
+        <div class="col-sm-3">
+          <p> <h2>Your api key is<br></h2>
+          <h1><b><span id="api-key"></span></b></h1></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 col-sm-push-4">
+
+          Server
+          <pre>
+            blabla.com/api/
+          </pre>
+          Endpoints 
+          <pre>
+            url :alert
+            method: post
+
+          </pre>
+          <pre>
+          {
+            "apikey": <String>,
+            "name": <String>,
+            "description": <String>,
+            "lat": <Number>,
+            "long": <Number>,
+            "radius": <Number>,
+            "severity": <Number>,
+          }
+          </pre>
+          Example
+          <pre>
+          {
+            "apikey": "123456789",
+            "name": "Flood Alerting Channel",
+            "description": "Subscribe for Alerts",
+            "lat": 98.56,
+            "long": 45.45,
+            "radius": 4,
+            "severity": 1
+          }
+          </pre>
+          Response:
+          <pre>
+            OK
+         </pre>
+        </div>
+       </div>
+    </div>
+    <script src="static/bootstrap/js/jquery.min.js" type="text/javascript"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function getJsonFromUrl() {
+        var query = location.search.substr(1);
+        var result = {};
+        query.split("&").forEach(function(part) {
+          var item = part.split("=");
+          result[item[0]] = decodeURIComponent(item[1]);
+        });
+        document.getElementById('api-key').innerHTML = result.response;
+        console.log(result);
+      }
+      getJsonFromUrl();
+    </script>
+  </body>
+</html>
